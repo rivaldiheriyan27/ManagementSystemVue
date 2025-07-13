@@ -2,6 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import HomeView from '../views/HomeView.vue'
+import CreateBook from '@/views/CreateBook.vue'
+import EditBook from '@/views/EditBook.vue'
+import HistoryBook from '@/views/HistoryBook.vue'
+import BorrowBook from '@/views/BorrowBook.vue'
 // import { useAuthStore } from '@/stores/auth'
 
 const routes = [
@@ -20,6 +24,26 @@ const routes = [
     path: '/register',
     name: 'register',
     component: RegisterView,
+  },
+  {
+    path: '/book/create',
+    component: CreateBook,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/book/edit/:id',
+    component: EditBook,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/history',
+    component: HistoryBook,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/borrow',
+    component: BorrowBook,
+    meta: { requiresAuth: true },
   },
 ]
 

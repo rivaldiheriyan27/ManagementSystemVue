@@ -14,10 +14,10 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-// import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from '@/stores/auth'
 
 const router = useRouter()
-// const authStore = useAuthStore()
+const authStore = useAuthStore()
 
 const email = ref('')
 const password = ref('')
@@ -36,8 +36,10 @@ const handleLogin = async () => {
     return
   }
 
-  //   authStore.setToken(data.token)
-  localStorage.setItem('token', data.token)
+  authStore.setToken(data.token)
+  authStore.setRole(data.role)
+  router.push('/')
+
   router.push('/')
 }
 </script>
